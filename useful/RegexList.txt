@@ -73,5 +73,11 @@ need to open in excel and audit the adding to 20, saw some negative values...
 
 
 
+...errors to be fixed:
+1) If sum adds to over 20 (not counting the 21+ values themselves), the values like 19-24 show up as 6, and it should be 2. The 21-23 values can be inferred.
+2) But there is this example: 2B=2, 3B=2, HR=23. Both the 3B values are > 20. So the '2' should be changed to a '21'.
+
+3) Fix the ones that add to < 20 by hand. Ex google search site:showdowncards.com Adam Dunn 2004
+4) Do a sanity check on the OB value. Make sure no pitchers, etc.
 
 

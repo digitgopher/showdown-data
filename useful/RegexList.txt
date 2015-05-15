@@ -24,6 +24,17 @@ Number 0 can only be done to standard batting, which is read in first, because i
 Put parenthesis at beginning and end of file...
 
 
+Then if there is a + value for all the fielding:
+15)		'\+([0-9]+),NULL	',\1
+16)		'\+([0-9]+),(.*),NULL	',\1,\2
+17)		'-([a-zA-Z0-9]+)\+([0-9])(.*),NULL,NULL,NULL	',\2,'\1',\2\3
+18)'-([a-zA-Z0-9]+)-' deal with that by hand
+
+Then use duplicates.py, but note it will blow away ALL the lines that are the same. For example, schema lines of both pitchers and batters.
+
+
+
+
 
 Showdown
 
@@ -69,11 +80,8 @@ Dealing with icons and positions is a pain:
 6i)	\[\](.*?),	,\1	// separate positions
 
 
-need to open in excel and audit the adding to 20, saw some negative values...
 
-
-
-...errors to be fixed:
+need to open in excel and audit the adding to 20, saw some negative values......errors to be fixed:
 1) If sum adds to over 20 (not counting the 21+ values themselves), the values like 19-24 show up as 6, and it should be 2. The 21-23 values can be inferred.
 2) But there is this example: 2B=2, 3B=2, HR=23. Both the 3B values are > 20. So the '2' should be changed to a '21'.
 
@@ -81,3 +89,4 @@ need to open in excel and audit the adding to 20, saw some negative values...
 4) Do a sanity check on the OB value. Make sure no pitchers, etc.
 
 
+Now to add it to the sql file...

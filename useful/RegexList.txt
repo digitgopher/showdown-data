@@ -63,6 +63,8 @@ Break it down:
 3b)	^\*([a-zA-Z\.'-]*) ([- a-zA-Z\.']*),('0[0-9])(,,)	\1,\2,\1 \2,\3,PR,	// Split pennant run names into first, last, full, year, PR (394 total)
 3c)	^\*\*([a-zA-Z\.'-]*) ([- a-zA-Z\.']*),('0[0-9])(,,)	\1,\2,\1 \2,\3,TD,	// Split trading deadline names into first, last, full, year, TD (344 total)
 4)	'0([0-9])	200\1	// Replace all years
+
+(Batters only)
 5a)	,A,	,20,
 5b)	,B,	,15,
 5c)	,C,	,10,
@@ -79,6 +81,14 @@ Dealing with icons and positions is a pain:
 6h)	(.)$	\1,,,,,,,,,,,,,,,,	// add 16 commas
 6i)	\[\](.*?),	,\1	// separate positions
 
+(Pitchers only)
+perform 6g) from the Batters above to get rid of icon
+5)Get rid of sip and tr cols in excel
+watch for quotes on the icons...
+
+
+
+
 
 
 need to open in excel and audit the adding to 20, saw some negative values......errors to be fixed:
@@ -88,5 +98,5 @@ need to open in excel and audit the adding to 20, saw some negative values......
 3) Fix the ones that add to < 20 by hand. Ex google search site:showdowncards.com Adam Dunn 2004
 4) Do a sanity check on the OB value. Make sure no pitchers, etc.
 
-
+then pick up from step 9 above.
 Now to add it to the sql file...

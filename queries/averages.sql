@@ -29,4 +29,4 @@ AVG(CASE WHEN startingPos1 = '3B' THEN fielding1 WHEN startingPos2 = '3B' THEN f
 AVG(CASE WHEN startingPos1 = 'LFRF' OR startingPos1 = 'OF' OR startingPos1 = 'CF' THEN fielding1 WHEN startingPos2 = 'LFRF' OR startingPos2 = 'OF' OR startingPos2 = 'CF'THEN fielding2 WHEN startingPos3 = 'LFRF' OR startingPos3 = 'OF' OR startingPos3 = 'CF'THEN fielding3 WHEN startingPos4 = 'LFRF' OR startingPos4 = 'OF' OR startingPos4 = 'CF'THEN fielding4 END) AS `All Outfielders' Fielding`
 
 
-FROM mlb.battercards GROUP BY `Card Era`;
+FROM `batter-cards` GROUP BY `Card Era`;

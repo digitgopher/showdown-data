@@ -30,8 +30,53 @@ CREATE TABLE `batter-cards` (
   `fielding3` int(11),
   `startingPos4`  varchar(4),
   `fielding4` int(11),
+
+  `TO` int(11),
+  `xbh`  int(11),
+  `numPos` int(1),
   PRIMARY KEY (`yearID`,`setID`,`cardNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DELIMITER |
+
+DROP TRIGGER IF EXISTS computed_vals_insert|
+CREATE TRIGGER computed_vals_insert BEFORE INSERT ON `batter-cards`
+  FOR EACH ROW BEGIN
+    SET NEW.TO = NEW.SO + NEW.GB + NEW.FB;
+    SET NEW.xbh =
+      (CASE WHEN NEW.1Bplus < 20 THEN NEW.1Bplus ELSE 0 END) +
+      (CASE WHEN NEW.2B < 20 THEN NEW.2B ELSE 0 END) +
+      (CASE WHEN NEW.3B < 20 THEN NEW.3B ELSE 0 END) +
+      (CASE WHEN NEW.HR < 20 THEN NEW.HR ELSE 0 END);
+    SET NEW.numPos = CASE
+      WHEN NEW.startingPos2 IS NULL THEN 1
+      WHEN NEW.startingPos3 IS NULL THEN 2
+      WHEN NEW.startingPos4 IS NULL THEN 3
+      ELSE 4 END;
+  END;
+|
+
+DROP TRIGGER IF EXISTS computed_vals_update|
+CREATE TRIGGER computed_vals_update BEFORE UPDATE ON `batter-cards`
+  FOR EACH ROW BEGIN
+    SET NEW.TO = NEW.SO + NEW.GB + NEW.FB;
+    SET NEW.xbh =
+      (CASE WHEN NEW.1Bplus < 20 THEN NEW.1Bplus ELSE 0 END) +
+      (CASE WHEN NEW.2B < 20 THEN NEW.2B ELSE 0 END) +
+      (CASE WHEN NEW.3B < 20 THEN NEW.3B ELSE 0 END) +
+      (CASE WHEN NEW.HR < 20 THEN NEW.HR ELSE 0 END);
+    SET NEW.numPos = CASE
+      WHEN NEW.startingPos2 IS NULL THEN 1
+      WHEN NEW.startingPos3 IS NULL THEN 2
+      WHEN NEW.startingPos4 IS NULL THEN 3
+      ELSE 4 END;
+  END;
+|
+
+DELIMITER ;
+
+
 INSERT INTO `batter-cards`(
 `nameFirst`,`nameLast`,`nameFull`,`yearID`,`setID`,`cardNo`,`team`, -- 7
 `onbase`,`SO`,`GB`,`FB`,`BB`,`1B`,`1Bplus`,`2B`,`3B`,`HR`, -- 10

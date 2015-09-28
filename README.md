@@ -1,16 +1,21 @@
 # Showdown Data
 MLB Showdown card data - finally a comprehensive reference!
 
-Developed for MySQL relational database. See [releases](https://github.com/digitgopher/showdown-data/releases/latest) for CSV and JSON files available for download.
+Developed for MySQL relational database.
 
+[**Latest data set**](https://github.com/digitgopher/showdown-data/releases/latest) (CSV and JSON files available)
 
 ## Quality
-When you find errors in the data, please let Daniel Tixier know or create an issue.
+When you find errors in the data please contact Daniel Tixier.
 
 ## Attribution
-Created by Daniel Tixier.
+Data set created and compiled by Daniel Tixier.
 
-## Data Structure
+- Modern cards from Colby Tallafus [[blog](http://mlbshowdowncards.blogspot.com/)]
+- WOTC data originally compiled by [ShowdownCards.com](http://www.showdowncards.com)
+- Baseball season data from [Baseball-Reference](http://www.baseball-reference.com/)
+
+## Showdown Schema
 
 Common to pitchers and batters:
 - `nameFirst`: First name

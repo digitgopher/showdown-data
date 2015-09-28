@@ -12,7 +12,7 @@ Sub RangeToValue()
     Dim j As Object
     Dim ii As Integer
     Dim jj As Integer
-   
+
     ' Set up regEx objects
     With regEx
         .Global = True
@@ -26,7 +26,7 @@ Sub RangeToValue()
         .IgnoreCase = False
         .Pattern = rangeOverTwentyPattern
     End With
-    
+
     ' ***BE SURE TO SET THIS***
     Set rngCell = Range("G2:P1454")
 
@@ -67,6 +67,9 @@ Sub RangeToValue()
                 computedValue = 21 - cell.Value
                 cell.Value = computedValue
             End If
+        ' 5) Everything else is single value (e.g. 3, 10, 20), except ignore zero.
+        ElseIf cell.Value <> 0 Then
+            cell.Value = 1
         End If
     Next cell
 

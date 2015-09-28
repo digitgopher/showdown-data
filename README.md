@@ -43,12 +43,15 @@ TABLE `batter-cards` specific:
 - `fielding3`: The fielding (or throwing) value for startingPos3
 - `startingPos4`: Another position the batter plays, if applicable
 - `fielding4`: The fielding (or throwing) value for startingPos4
+- `TO`: Total outs; sum of SO, GB, and FB.
+- `xbh`: Extra base hits; sum of 1Bplus, 2B, 3B, and HR.
+- `numPos`: Number of positions played, as printed on card, e.g. OF is one position, etc; Count of `startingPos#` attributes
 
 TABLE `pitcher-cards` specific:
 - `control`: Control
 - `PU`: Number of PU values on chart
-- `IP`: IP
-- `Pos`: Position
+- `IP`: IP (1/3 IP Relievers encoded as integer `13`)
+- `Pos`: Position; Starter, Reliever, or Closer
 
 
 ## Season Data
